@@ -24,8 +24,8 @@ jobs:
         context: .
         file: ./docker/Dockerfile.user
         push: true
-        tags: akg2506/week-18cd/:latest  # Replace with your Docker Hub username and repository
+        tags: akg2506/week-18cd:latest  # Replace with your Docker Hub username and repository
 
-        
+
     - name: Verify Pushed Image
-      run: docker pull akg2506/week-18cd/:latest  # Replace with your Docker Hub username and repository
+      run: docker pull akg2506/week-18cd:latest  # Replace with your Docker Hub username and repository
