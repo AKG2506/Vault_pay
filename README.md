@@ -1,84 +1,28 @@
-# Turborepo starter
+# VaultPay 💸
 
-This Turborepo starter is maintained by the Turborepo core team.
+VaultPay is a next-gen fintech wallet app built for learning, prototyping, and rapid development. It simulates digital financial transactions in a secure and scalable architecture using modern web technologies. The project is structured as a **Turborepo monorepo** with modular apps and shared packages.
 
-## Using this example
+The platform includes a sleek **Dashboard UI** , giving users a responsive and intuitive interface to manage wallet actions and view financial data.
 
-Run the following command:
+---
 
-```sh
-npx create-turbo@latest
-```
+### ✨ Features
 
-## What's inside?
+- 🔐 **User Authentication** — NextAuth.js with JWT strategy for secure login and session management.
+- 💰 **Add Money** — Instantly simulate a bank transfer to your wallet using a mock gateway.
+- 🔁 **Webhook Simulation** — Update transaction statuses manually using a webhook handler to mimic real-world payment flow.
+- 🔄 **P2P Transfers** — Send and receive money between registered users using wallet balances.
+- 🧾 **Transaction History** — View all transactions with live status indicators.
+- 🧱 **Modular Architecture** — Apps and shared packages separated via Turborepo (`apps/`, `packages/`).
+- 🧪 **Prisma ORM** — Shared DB layer inside `packages/db`, powered by PostgreSQL.
+- 🐳 **Docker Support** — PostgreSQL runs in a local container for smooth development.
+- 🚀 **Deployed with Vercel** — Environment variables managed carefully; Prisma generation handled at build time.
 
-This Turborepo includes the following packages/apps:
+---
 
-### Apps and Packages
+### ⚠️ What VaultPay Is Not
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+VaultPay is a **prototype wallet application** meant for educational and development purposes. It **does not process real bank transactions**, **does not connect to actual bank APIs**, and **does not move real money**. All payment flows and webhook interactions are **fully simulated** to mimic a production-like experience without real financial risk.
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+---
 
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turborepo.com/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turborepo.com/docs/core-concepts/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
