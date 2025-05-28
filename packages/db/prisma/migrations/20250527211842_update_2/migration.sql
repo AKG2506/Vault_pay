@@ -1,0 +1,5 @@
+-- AddForeignKey
+ALTER TABLE "P2PTransaction" ADD CONSTRAINT "P2PTransaction_fromId_fkey" FOREIGN KEY ("fromId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "P2PTransaction" ADD CONSTRAINT "P2PTransaction_toId_fkey" FOREIGN KEY ("toId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

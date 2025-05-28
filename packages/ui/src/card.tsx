@@ -11,7 +11,7 @@ export function Card({
     <div
       className="p-4 flex flex-col"
     >
-      <h1 className="text-xl border-b font-medium ">
+      <h1 className="text-2xl border-b font-medium ">
         {title}
       </h1>
       {children}

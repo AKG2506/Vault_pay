@@ -13,6 +13,7 @@ export default function Layout({
           <SidebarItem href="/dashboard" icon={<HomeIcon />} title="Home" />
           <SidebarItem href="/transfer" icon={<TransferIcon />} title="Transfer" />
           <SidebarItem href="/transactions" icon={<TransactionsIcon />} title="Transactions" />
+          <SidebarItem href="/p2p" icon={<P2PTransferIcon />} title="P2P Transfer" />
         </div>
       </aside>
 
@@ -79,3 +80,41 @@ function TransactionsIcon() {
     </svg>
   );
 }
+
+function P2PTransferIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="1.5"
+      stroke="currentColor"
+      className="h-8  text-gray-600"
+    >
+      {/* Left person (head + shoulders) */}
+      <circle cx="6" cy="7" r="2" />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M4 12c0-1 4-1 4 0v2H4v-2z"
+      />
+
+      {/* Arrow */}
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M9 10h6m0 0l-3-3m3 3l-3 3"
+      />
+
+      {/* Right person (head + shoulders) */}
+      <circle cx="18" cy="7" r="2" />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M16 12c0-1 4-1 4 0v2h-4v-2z"
+      />
+    </svg>
+  );
+}
+
+

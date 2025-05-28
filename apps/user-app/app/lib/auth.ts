@@ -37,8 +37,14 @@ export const authOptions = {
                 const user = await db.user.create({
                     data: {
                         number: credentials.phone,
-                        password: hashedPassword
+                        password: hashedPassword,
+                        Balance: {
+                            create: {
+                              amount: 0,
+                              locked: 0
+                        }
                     }
+                }
                 });
             
                 return {
@@ -57,7 +63,7 @@ export const authOptions = {
     secret: process.env.JWT_SECRET || "secret",
     callbacks: {
         // TODO: can u fix the type here? Using any is bad
-        async session({ token, session }: any) {
+        async session({ token, session }: { token: any, session: any }) {
             if (session?.user && token?.sub) {
                 session.user.id = token.sub;
               }
