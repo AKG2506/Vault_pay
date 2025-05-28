@@ -40,7 +40,7 @@ export const authOptions = {
                         password: hashedPassword,
                         Balance: {
                             create: {
-                              amount: 0,
+                              amount: 50000,
                               locked: 0
                         }
                     }
