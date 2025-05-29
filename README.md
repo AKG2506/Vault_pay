@@ -1,60 +1,183 @@
-# VaultPay 💸
 
-VaultPay is a next-gen fintech wallet app built for learning, prototyping, and rapid development. It simulates digital financial transactions in a secure and scalable architecture using modern web technologies. The project is structured as a **Turborepo monorepo** with modular apps and shared packages.
+# 🚀 VaultPay 💸
 
-The platform includes a sleek **Dashboard UI** , giving users a responsive and intuitive interface to manage wallet actions and view financial data.
+VaultPay is a next-gen fintech wallet app built for learning, prototyping, and rapid development.  
+It simulates digital financial transactions in a secure and scalable architecture using modern web technologies.
 
----
+🔧 **Built with:**  
+**Turborepo**, **Next.js**, **Prisma**, **PostgreSQL**, **Docker**, and more!
 
-### ✨ Features
-
-- 🔐 **User Authentication** — NextAuth.js with JWT strategy for secure login and session management.
-- 💰 **Add Money** — Instantly simulate a bank transfer to your wallet using a mock gateway.
-- 🔁 **Webhook Simulation** — Update transaction statuses manually using a webhook handler to mimic real-world payment flow.
-- 🔄 **P2P Transfers** — Send and receive money between registered users using wallet balances.
-- 🧾 **Transaction History** — View all transactions with live status indicators.
-- 🧱 **Modular Architecture** — Apps and shared packages separated via Turborepo (`apps/`, `packages/`).
-- 🧪 **Prisma ORM** — Shared DB layer inside `packages/db`, powered by PostgreSQL.
-- 🛡 **Database Locking**: Protects against race conditions using locking during concurrent transfers.
-- 🐳 **Docker Support** — PostgreSQL runs in a local container for smooth development.
-- 🚀 **Deployed with Vercel** — Environment variables managed carefully; Prisma generation handled at build time.
+🖥️ The platform features a sleek, responsive **Dashboard UI** for managing wallets and tracking financial activities.
 
 ---
 
-### ⚠️ What VaultPay Is Not
+## 📚 Table of Contents
 
-VaultPay is a **prototype wallet application** meant for educational and development purposes. It **does not process real bank transactions**, **does not connect to actual bank APIs**, and **does not move real money**. All payment flows and webhook interactions are **fully simulated** to mimic a production-like experience without real financial risk.
-
----
-
-### 🧪 Live App Testing Guide (Deployed on Vercel)
-
-> 🟠 **Note**: Webhook simulation requires server-side DB access. Vercel-deployed users cannot trigger webhook status updates manually. So wallet balances from Add Money remain **pending** unless the webhook is called (not exposed in public UI).
-
-#### ✅ You Can:
-- Create multiple accounts (e.g., two users with different phone numbers).
-- Simulate **Add Money** (funds show up only after webhook triggers).
-- Perform **P2P transfers** using wallets with confirmed balances.
-
-#### 🚫 You Can't:
-- Manually trigger the webhook to confirm Add Money status.
-- See funds reflected immediately after Add Money (requires backend webhook).
-
----
-### 🧪 Recommended Test Flow
-
-1. 🔐 **Create two accounts** using two different mobile numbers.
-2. 💵 For one user, simulate **Add Money** (status stays "Processing").
-3. 🧑‍🤝‍🧑 Switch between accounts and test **P2P transfer** to see money move between wallets (only if source user has confirmed balance).
-4. 🛡 If you attempt concurrent requests (e.g., click transfer multiple times), the backend safely locks rows using **database-level locking** to prevent double spending.
-
----
-### ⚠️ Disclaimer
-
-VaultPay is a **development prototype**.  
-- ❌ No real money is moved.
-- ❌ No actual bank APIs are used.
-- ✅ All transactions are **mocked/simulated** for educational purposes only.
+- [✨ Features](#-features)
+- [⚠️ What VaultPay Is Not](#️-what-vaultpay-is-not)
+- [🧪 Live App Testing Guide (Deployed on Vercel)](#-live-app-testing-guide-deployed-on-vercel)
+- [🚀 Getting Started](#-getting-started)
+- [💻 Running Locally](#-running-locally)
+- [🤝 Contributing](#-contributing)
 
 ---
 
+## ✨ Features
+
+- 🔐 **User Authentication** — Secure login/session via NextAuth.js (JWT).
+- 💰 **Add Money** — Simulate bank transfers to wallet with a mock gateway.
+- 🔁 **Webhook Simulation** — Manually update transaction status via a mock webhook.
+- 🔄 **P2P Transfers** — Transfer money between users using wallet balances.
+- 🧾 **Transaction History** — Real-time updates with status indicators.
+- 🧱 **Modular Architecture** — Structured via Turborepo (`apps/`, `packages/`).
+- 🧪 **Prisma ORM** — Centralized DB layer inside `packages/db`.
+- 🛡 **Database Locking** — Prevents race conditions on concurrent transfers.
+- 🐳 **Docker Support** — PostgreSQL containerized for easier development.
+- 🚀 **Vercel Deployment** — Deployed with build-time Prisma generation.
+
+---
+
+## ⚠️ What VaultPay Is Not
+
+> ❗ This is a **development prototype** intended solely for **educational use**.
+
+- ❌ Does NOT connect to real bank APIs.
+- ❌ Does NOT process real transactions or move money.
+- ✅ All data flow and transaction simulations are fully mocked.
+
+---
+
+## 🧪 Live App Testing Guide (Deployed on Vercel)
+
+> ⚠️ Webhook triggers require backend access — not available on Vercel UI.
+
+### ✅ You Can:
+
+- 🔐 Create accounts (e.g., with two mobile numbers).
+- 💳 Simulate **Add Money** (shows "Processing").
+- 🔁 Perform **P2P Transfers** (only if funds are confirmed).
+
+### 🚫 You Can't:
+
+- 🔄 Manually trigger the webhook (requires local access).
+- 💸 See funds instantly post-"Add Money" (needs webhook confirmation).
+
+### 🧪 Recommended Test Flow:
+
+1. Create two accounts.
+2. Simulate "Add Money" — remains **Processing**.
+3. Switch accounts and try **P2P Transfers**.
+4. Backend uses DB locking to handle concurrent actions safely.
+
+---
+
+## 🚀 Getting Started
+
+Clone, install, and run locally with the following steps.
+
+### 🔧 Prerequisites
+
+Ensure the following tools are installed:
+
+- Node.js (v18+)
+- npm
+- Git
+- PostgreSQL (or Neon.tech/Docker)
+- Docker (optional, for local Postgres)
+- Postman (or API client)
+
+### 📦 Installation
+
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+npm install
+```
+
+---
+
+## 💻 Running Locally
+
+### 🔐 Configure Environment Variables
+
+```bash
+cp .env.example .env
+cp apps/user-app/.env.example apps/user-app/.env
+cp packages/db/.env.example packages/db/.env
+cp apps/bank-webhook/.env.example apps/bank-webhook/.env
+```
+
+Fill in `.env` files appropriately.
+
+**Example (`apps/user-app/.env`):**
+
+```env
+JWT_SECRET=test
+NEXTAUTH_URL=http://localhost:3001
+```
+
+**Example (`packages/db/.env`):**
+
+```env
+DATABASE_URL="postgresql://user:password@host:port/database"
+```
+
+### ▶️ Start the User Application
+
+```bash
+npm run start-user-app
+# Runs on http://localhost:3001
+```
+
+### 💸 Perform "Add Money"
+
+- Login to the User App
+- Navigate to **Transfer** section
+- Initiate an **Add Money** transaction
+
+### 🌐 Start the Webhook Server
+
+```bash
+cd apps/bank-webhook/
+tsc -b
+node dist/index.js
+# Typically runs on http://localhost:3003
+```
+
+### 📬 Simulate Webhook via Postman
+
+- URL: `http://localhost:3003/hdfcWebhook`
+- Method: `POST`
+- Header: `Content-Type: application/json`
+- Body:
+
+```json
+{
+  "token": "EXTRACT_FROM_DB",
+  "user_identifier": "EXTRACT_FROM_DB",
+  "amount": "EXTRACT_FROM_DB",
+  "status": "Success"
+}
+```
+
+> 🧠 Replace placeholders using your database records.
+
+### 📊 Verify Transaction
+
+- Refresh the dashboard
+- You should now see the transaction status updated!
+
+---
+
+## 🤝 Contributing
+
+We ❤️ contributions!
+
+1. Fork the repo
+2. Create a branch (`git checkout -b feat/new-feature`)
+3. Commit and push your changes
+4. Open a Pull Request
+
+---
+
+🧠 **Learning by building. Simulating the real world. VaultPay it forward.**
