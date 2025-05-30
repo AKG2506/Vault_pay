@@ -36,7 +36,7 @@ jobs:
     #     username: ${{ secrets.SSH_USERNAME }}
     #     key: ${{ secrets.SSH_KEY }}
     #     script: |
-    #       sudo docker pull akg2506/week-18cd:latest
+    #       sudo docker pull akg2506/vault_pay:latest
     #       sudo docker stop web-app || true
     #       sudo docker rm web-app || true
-    #       sudo docker run -d --name web-app -p 3005:3000 akg2506/week-18cd:latest
+    #       sudo docker run -d --name web-app -p 3005:3000 akg2506/vault_pay:latest
