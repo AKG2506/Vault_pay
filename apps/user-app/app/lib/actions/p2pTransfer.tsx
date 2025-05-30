@@ -42,7 +42,7 @@ export async function p2pTransfer(to: string, amount: number) {
         where: { userId: fromUserId },
       });
       // Introduce a custom delay (e.g., 2 seconds)
-      await new Promise((resolve) => setTimeout(resolve, 3000));
+      // await new Promise((resolve) => setTimeout(resolve, 3000));
 
       if (!fromBalance || fromBalance.amount < amount) {
         throw new Error("Insufficient balance.");

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { startTransition, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@repo/ui/button";
 import { Card } from "@repo/ui/card";
@@ -15,14 +15,18 @@ export function SendCard() {
   const router = useRouter();
 
   const handleSend = async () => {
-    setLoading(true);
+    setLoading(true); // disables button immediately
+
     const result = await p2pTransfer(number, Number(amount));
-    setLoading(false);
 
     if (result?.status === "success") {
-      router.push("/transfer");
+      // Route change won't block UI thread
+      startTransition(() => {
+        router.push("/transfer");
+      });
     } else {
       alert(result?.message || "Transfer failed");
+      setLoading(false);
     }
   };
 
@@ -46,7 +50,7 @@ export function SendCard() {
                 onChange={(value) => setAmount(value)}
               />
               <div className="pt-2 flex justify-center">
-                <Button onClick={handleSend}>
+                <Button onClick={handleSend} disabled={loading}>
                   {loading ? "Sending..." : "Send"}
                 </Button>
               </div>
